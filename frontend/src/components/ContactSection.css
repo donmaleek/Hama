@@ -1,0 +1,62 @@
+.contact-section {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;  /* Make it full width */
+  max-width: 1155px;  /* Set a max width similar to the Map component */
+  margin: 0 auto;  /* Center the section */
+  font-family: Arial, sans-serif;
+}
+
+.contact-title {
+  font-size: 36px;
+  color: #004080;
+  text-align: center; /* Centering the title */
+  margin-bottom: 20px;
+}
+
+.contact-subtitle {
+  font-size: 24px;
+  color: #0066cc;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-content {
+  font-size: 18px;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
+.contact-info {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.contact-button {
+  background-color: #004080; /* Matching the theme color */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #0066cc; /* Slightly lighter blue for hover */
+}

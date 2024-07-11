@@ -1,0 +1,70 @@
+/* src/components/Register.css */
+
+.register-container {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-title {
+    font-size: 36px;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-input, .register-textarea, .register-file-input {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .register-button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-button:hover {
+    background-color: #0066cc;
+  }
+  
+  .register-login {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-login-button {
+    background: none;
+    border: none;
+    color: #004080;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-login-button:hover {
+    color: #0066cc;
+  }
+  

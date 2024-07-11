@@ -1,0 +1,42 @@
+.about-us-section {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1120px;  /* Ensure it matches the map section width */
+  margin: 0 auto;  /* Center the section */
+  font-family: Arial, sans-serif;
+}
+
+.about-us-title {
+  font-size: 36px;
+  color: #004080;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-us-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-us-image {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.about-us-text-container {
+  width: 50%;
+}
+
+.about-us-text {
+  font-size: 18px;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}

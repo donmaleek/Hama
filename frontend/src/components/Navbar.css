@@ -1,0 +1,5 @@
+.navbar a:hover {
+    background-color: #0066cc; /* Slightly lighter blue for hover */
+    border-radius: 5px;
+  }
+  

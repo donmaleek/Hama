@@ -1,0 +1,45 @@
+/* src/components/HeroSection.css */
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/herosectionback.jpeg'); /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.hero-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-family: 'Arial, sans-serif';
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  background-color: #004080; /* Dark blue background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #0066cc; /* Lighter blue for hover */
+}
