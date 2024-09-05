@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
@@ -9,6 +8,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState(''); // State for error messages
 
   const navigate = useNavigate();
 
@@ -22,13 +22,15 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Reset any previous error
 
     try {
-      await axios.post('http://localhost:5000/login', formData);
+      // Adjust the URL according to your backend route
+      await axios.post('http://localhost:5000/api/users/login', formData);
       navigate('/profile');
     } catch (error) {
       console.error('Error during login:', error);
-      // Handle error (e.g., show error message to user)
+      setError('Invalid email or password. Please try again.'); // Set error message to state
     }
   };
 
@@ -54,6 +56,7 @@ const Login = () => {
           style={styles.input}
           required
         />
+        {error && <p style={styles.error}>{error}</p>} {/* Display error message */}
         <button type="submit" style={styles.button}>Login</button>
       </form>
       <p style={styles.register}>
@@ -113,6 +116,11 @@ const styles = {
     cursor: 'pointer',
     textDecoration: 'underline',
     fontSize: '16px',
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: '20px',
   },
 };
 

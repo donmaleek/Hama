@@ -33,6 +33,7 @@
     "web-vitals": "^4.2.1"
   },
   "devDependencies": {
+    "@types/multer": "^1.4.11",
     "customize-cra": "^1.0.0",
     "nodemon": "^3.1.4",
     "react-app-rewired": "^2.2.1"

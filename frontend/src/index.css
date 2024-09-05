@@ -1,3 +1,4 @@
+/* Reset margin and apply global font styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +6,60 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
+/* Default font for code elements */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Basic layout styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem 0;
+}
+
+/* General responsive elements */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablets and smaller */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Example of making text smaller for tablets */
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  /* Hide elements or change layout as needed */
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Example of making text even smaller for mobile */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust layout for mobile view */
 }

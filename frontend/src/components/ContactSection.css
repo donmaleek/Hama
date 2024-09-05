@@ -3,16 +3,16 @@
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;  /* Make it full width */
-  max-width: 1155px;  /* Set a max width similar to the Map component */
-  margin: 0 auto;  /* Center the section */
+  width: 100%;
+  max-width: 1155px;
+  margin: 0 auto;
   font-family: Arial, sans-serif;
 }
 
 .contact-title {
   font-size: 36px;
   color: #004080;
-  text-align: center; /* Centering the title */
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .contact-button {
-  background-color: #004080; /* Matching the theme color */
+  background-color: #004080;
   color: white;
   font-size: 16px;
   padding: 10px 20px;
@@ -58,5 +58,56 @@
 }
 
 .contact-button:hover {
-  background-color: #0066cc; /* Slightly lighter blue for hover */
+  background-color: #0066cc;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 20px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-subtitle {
+    font-size: 20px;
+  }
+
+  .contact-content {
+    font-size: 16px;
+  }
+
+  .contact-info {
+    font-size: 14px;
+  }
+
+  .contact-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 24px;
+  }
+
+  .contact-subtitle {
+    font-size: 18px;
+  }
+
+  .contact-content {
+    font-size: 14px;
+  }
+
+  .contact-info {
+    font-size: 12px;
+  }
+
+  .contact-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }

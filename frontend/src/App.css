@@ -1,50 +1,10 @@
+/* Base Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: white;
   color: black;
-}
-
-.navbar {
-  background-color: rgba(5, 1, 1, 0.74);
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  color: rgb(255, 255, 255);
-  align-items: center;
-  height: 70px; /* Set a fixed height for the navbar */
-  border-radius: 35px; /* Add curved edges to the navbar */
-}
-
-.navbar .logo img {
-  height: 210px; /* Set the height for the logo */
-  width: auto;
-  margin-top: 6px; /* Adjust the negative margin to center the logo vertically */
-}
-
-.navbar nav {
-  flex-grow: 1; /* Allow the nav to grow and take available space */
-  display: flex;
-  justify-content: space-around; /* Equally space the links */
-}
-
-.navbar nav a {
-  color: rgb(91, 248, 248);
-  margin: 0 1rem;
-  text-decoration: none;
-  font-family: Garamond, serif;
-  font-size: 1.2rem; /* Increase the text size */
-  font-weight: bold; /* Set the font weight to bold */
-  font-style: italic; /* Set the font style to italic */
-  text-transform: uppercase; /* Transform text to uppercase */
-  letter-spacing: 0.05rem; /* Add some letter spacing */
-  transition: color 0.3s ease; /* Add a smooth transition for color change */
-}
-
-.navbar nav a:hover {
-  text-decoration: underline;
-  color: rgb(241, 237, 179);
 }
 
 .container {
@@ -55,19 +15,21 @@ h1, h2, h3 {
   color: avocado;
 }
 
+/* Buttons */
 button {
   background-color: gold;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  font-size: 1.2rem; /* Increase button text size */
+  font-size: 1.2rem;
 }
 
 button:hover {
   background-color: darkgoldenrod;
 }
 
+/* Forms */
 form div {
   margin-bottom: 1rem;
 }
@@ -76,7 +38,7 @@ form label {
   display: block;
   margin-bottom: 0.5rem;
   color: avocado;
-  font-size: 1.2rem; /* Increase label text size */
+  font-size: 1.2rem;
 }
 
 form input, form textarea {
@@ -84,15 +46,17 @@ form input, form textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem; /* Increase input and textarea text size */
+  font-size: 1rem;
 }
 
+/* Map Container */
 .map-container {
   margin-top: 2rem;
   height: 400px;
   width: 100%;
 }
 
+/* Property Cards */
 .property-card {
   border: 1px solid #ccc;
   padding: 1rem;
@@ -100,14 +64,90 @@ form input, form textarea {
   border-radius: 4px;
 }
 
+/* Featured Rentals */
+.featured-rentals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem 1rem;
+}
+
+.featured-rental-card {
+  flex: 1 1 calc(33.333% - 1rem); /* Three cards per row */
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.featured-rental-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.featured-rental-card h3 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.featured-rental-card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(5, 1, 1, 0.74);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: rgb(255, 255, 255);
+  align-items: center;
+  height: 70px;
+  border-radius: 35px;
+  padding: 1rem 2rem; /* Added padding */
+}
+
+.navbar .logo img {
+  height: 210px;
+  width: auto;
+  margin-top: 6px;
+}
+
+.navbar nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar nav a {
+  color: rgb(91, 248, 248);
+  margin: 0 1rem;
+  text-decoration: none;
+  font-family: Garamond, serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  text-decoration: underline;
+  color: rgb(241, 237, 179);
+}
+
+/* Footer */
 footer {
   background-color: rgba(5, 1, 1, 0.74);
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   color: rgb(255, 255, 255);
   align-items: center;
-  /*height: 70px; /* Set a fixed height for the navbar */
+  padding: 1rem 2rem; /* Added padding */
 }
 
 footer a {
@@ -115,15 +155,162 @@ footer a {
   margin: 0 1rem;
   text-decoration: none;
   font-family: Garamond, serif;
-  font-size: 1.2rem; /* Increase the text size */
-  font-weight: bold; /* Set the font weight to bold */
-  font-style: italic; /* Set the font style to italic */
-  text-transform: uppercase; /* Transform text to uppercase */
-  /*letter-spacing: 0.05rem; /* Add some letter spacing */
-  transition: color 0.3s ease; /* Add a smooth transition for color change */
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
   text-decoration: underline;
   color: rgb(241, 237, 179);
+}
+
+/* Responsive Styles */
+
+/* Navbar responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem; /* Adjusted padding */
+  }
+
+  .navbar .logo img {
+    height: 100px;
+    margin-top: 10px;
+  }
+
+  .navbar nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar nav a {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .navbar .logo img {
+    height: 80px;
+  }
+
+  .navbar nav a {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+  }
+}
+
+/* Container responsiveness */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0.5rem;
+  }
+}
+
+/* Button responsiveness */
+@media (max-width: 768px) {
+  button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+/* Form responsiveness */
+@media (max-width: 768px) {
+  form label {
+    font-size: 1.1rem;
+  }
+
+  form input, form textarea {
+    padding: 0.4rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form label {
+    font-size: 1rem;
+  }
+
+  form input, form textarea {
+    padding: 0.3rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Map Container responsiveness */
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    height: 200px;
+  }
+}
+
+/* Property Card responsiveness */
+@media (max-width: 768px) {
+  .property-card {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .property-card {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Featured Rentals responsiveness */
+@media (max-width: 768px) {
+  .featured-rental-card {
+    flex: 1 1 calc(50% - 1rem); /* Two cards per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-rental-card {
+    flex: 1 1 100%; /* One card per row */
+  }
+}
+
+/* Footer responsiveness */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem; /* Adjusted padding */
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 0.5rem;
+  }
 }

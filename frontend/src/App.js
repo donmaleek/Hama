@@ -8,6 +8,10 @@ import Testimonials from './components/TestimonialsSection'; // Import Testimoni
 import Contact from './components/ContactSection'; // Import Contact component
 import Navbar from './components/Navbar'; // Import Navbar component
 import Footer from './components/Footer'; // Import Footer component
+import Register from './components/Register'; // Import Register component
+import Login from './components/Login'; // Import Register component
+import Profile from './components/Profile'; // Import Register component
+
 import './App.css';
 import logo from './assets/logo2.png'; // Adjust the path according to your project structure
 
@@ -23,6 +27,9 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>

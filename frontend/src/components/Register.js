@@ -1,10 +1,10 @@
-// src/components/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  // State to manage the form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,8 +13,16 @@ const Register = () => {
     profilePicture: null,
   });
 
+  // State to manage errors
+  const [errors, setErrors] = useState({});
+  
+  // State for success or error messages
+  const [message, setMessage] = useState('');
+  
+  // Hook for navigation after registration
   const navigate = useNavigate();
 
+  // Function to handle changes in text inputs and textarea
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,6 +31,7 @@ const Register = () => {
     });
   };
 
+  // Function to handle changes in the file input
   const handleFileChange = (e) => {
     setFormData({
       ...formData,
@@ -30,24 +39,50 @@ const Register = () => {
     });
   };
 
+  // Function to validate form data
+  const validate = () => {
+    let tempErrors = {};
+    tempErrors.name = formData.name ? '' : 'Name is required.';
+    tempErrors.email = formData.email ? (/\S+@\S+\.\S+/.test(formData.email) ? '' : 'Email is not valid.') : 'Email is required.';
+    tempErrors.description = formData.description ? '' : 'Description is required.';
+    tempErrors.password = formData.password ? (formData.password.length >= 6 ? '' : 'Password must be at least 6 characters.') : 'Password is required.';
+    tempErrors.profilePicture = formData.profilePicture ? '' : 'Profile picture is required.';
+    setErrors(tempErrors);
+    return Object.values(tempErrors).every(x => x === '');
+  };
+
+  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission behavior
 
-    const formDataWithImage = new FormData();
-    formDataWithImage.append('name', formData.name);
-    formDataWithImage.append('email', formData.email);
-    formDataWithImage.append('description', formData.description);
-    formDataWithImage.append('password', formData.password);
-    if (formData.profilePicture) {
-      formDataWithImage.append('profilePicture', formData.profilePicture);
-    }
+    if (validate()) {
+      const formDataWithImage = new FormData();
+      formDataWithImage.append('name', formData.name);
+      formDataWithImage.append('email', formData.email);
+      formDataWithImage.append('description', formData.description);
+      formDataWithImage.append('password', formData.password);
+      if (formData.profilePicture) {
+        formDataWithImage.append('profilePicture', formData.profilePicture);
+      }
 
-    try {
-      await axios.post('http://localhost:5000/register', formDataWithImage);
-      navigate('/login');
-    } catch (error) {
-      console.error('Error during registration:', error);
-      // Handle error (e.g., show error message to user)
+      try {
+        // Send the form data to the backend via a POST request
+        await axios.post('http://localhost:5000/api/users/register', formDataWithImage);
+
+        // If successful, navigate to the login page
+        setMessage('Registration successful! Redirecting to login...');
+        navigate('/login');
+      } catch (error) {
+        if (error.response) {
+          setMessage(`Registration failed: ${error.response.data.message || error.response.data}`);
+        } else if (error.request) {
+          setMessage('No response from server. Please try again later.');
+        } else {
+          setMessage(`Error: ${error.message}`);
+        }
+      }
+    } else {
+      setMessage('Please fix the errors in the form.');
     }
   };
 
@@ -62,8 +97,9 @@ const Register = () => {
           value={formData.name}
           onChange={handleChange}
           style={styles.input}
-          required
         />
+        {errors.name && <div style={styles.error}>{errors.name}</div>}
+        
         <input
           type="email"
           name="email"
@@ -71,16 +107,18 @@ const Register = () => {
           value={formData.email}
           onChange={handleChange}
           style={styles.input}
-          required
         />
+        {errors.email && <div style={styles.error}>{errors.email}</div>}
+        
         <textarea
           name="description"
           placeholder="Short description"
           value={formData.description}
           onChange={handleChange}
           style={styles.textarea}
-          required
         />
+        {errors.description && <div style={styles.error}>{errors.description}</div>}
+        
         <input
           type="password"
           name="password"
@@ -88,17 +126,20 @@ const Register = () => {
           value={formData.password}
           onChange={handleChange}
           style={styles.input}
-          required
         />
+        {errors.password && <div style={styles.error}>{errors.password}</div>}
+        
         <input
           type="file"
           name="profilePicture"
           onChange={handleFileChange}
           style={styles.fileInput}
-          required
         />
+        {errors.profilePicture && <div style={styles.error}>{errors.profilePicture}</div>}
+        
         <button type="submit" style={styles.button}>Register</button>
       </form>
+      {message && <div style={styles.message}>{message}</div>}
       <p style={styles.login}>
         Or already have an account? <button style={styles.loginButton} onClick={() => navigate('/login')}>Login here</button>
       </p>
@@ -155,6 +196,17 @@ const styles = {
     cursor: 'pointer',
     transition: 'background-color 0.3s',
     borderRadius: '5px',
+  },
+  error: {
+    color: 'red',
+    fontSize: '14px',
+    marginBottom: '10px',
+  },
+  message: {
+    textAlign: 'center',
+    marginTop: '20px',
+    fontSize: '16px',
+    color: '#004080',
   },
   login: {
     marginTop: '20px',

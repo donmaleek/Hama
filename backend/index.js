@@ -7,9 +7,6 @@ const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/user');
 const propertyRouter = require('./routes/property');
-const { authenticate } = require('./middleware/auth');
-const User = require('./models/User');
-const Property = require('./models/Property');
 const app = express();
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
@@ -20,27 +17,55 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
 
-// Configure Multer for file uploads
+// Configure Multer for file uploads with security enhancements
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadsDir);
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    const safeFileName = `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9.]/g, '-')}`;
+    cb(null, safeFileName);
   }
 });
-const upload = multer({ storage });
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|gif/;
+    const mimetype = allowedTypes.test(file.mimetype);
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(new Error('Only images are allowed!'));
+  },
+  limits: {
+    fileSize: 1 * 1024 * 1024 // 1 MB limit
+  }
+});
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
-app.use('/uploads', express.static(uploadsDir));
+app.use('/uploads', express.static(uploadsDir, {
+  dotfiles: 'deny',
+  etag: false,
+  setHeaders: (res, path) => {
+    res.set('X-Content-Type-Options', 'nosniff');
+  }
+}));
 
 // Routes
 app.use('/api/users', userRouter);
 app.use('/api/properties', propertyRouter);
+
+// Root Route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Hama Bwana API');
+});
 
 // Database connection
 mongoose.connect('mongodb://localhost:27017/hama_bwana', {
@@ -61,5 +86,5 @@ mongoose.connect('mongodb://localhost:27017/hama_bwana', {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).json({ message: 'Something broke!' });
 });
