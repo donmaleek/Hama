@@ -1,12 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
 const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const slowDown = require('express-slow-down');
+const winston = require('winston');
+const cors = require('cors'); // Import cors
 const userRouter = require('./routes/user');
 const propertyRouter = require('./routes/property');
+const sequelize = require('./config/sequelize');
 const app = express();
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
@@ -16,6 +20,20 @@ const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
+
+// Logger configuration
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.Console({ format: winston.format.simple() })
+  ]
+});
 
 // Configure Multer for file uploads with security enhancements
 const storage = multer.diskStorage({
@@ -38,18 +56,43 @@ const upload = multer({
     if (mimetype && extname) {
       return cb(null, true);
     }
-    cb(new Error('Only images are allowed!'));
+    const error = new Error('Only image files (jpeg, jpg, png, gif) under 1MB are allowed!');
+    logger.error('File upload error: ' + error.message);
+    cb(error);
   },
   limits: {
     fileSize: 1 * 1024 * 1024 // 1 MB limit
   }
 });
 
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+
+// Slow down after certain requests
+const speedLimiter = slowDown({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  delayAfter: 50, // Start slowing down after 50 requests
+  delayMs: () => 500
+});
+
 // Middleware
+app.use(helmet()); // Security headers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 app.use(cookieParser());
+app.use(limiter);
+app.use(speedLimiter);
+
+// CORS Middleware
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from your frontend
+  credentials: true
+}));
+
 app.use('/uploads', express.static(uploadsDir, {
   dotfiles: 'deny',
   etag: false,
@@ -67,24 +110,36 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Hama Bwana API');
 });
 
-// Database connection
-mongoose.connect('mongodb://localhost:27017/hama_bwana', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('Connected to MongoDB');
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Database connection using Sequelize
+sequelize.sync()
+  .then(() => {
+    logger.info('Connected to the database');
+    app.listen(PORT, () => {
+      logger.info(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    logger.error('Database connection error: ', err.message);
+    process.exit(1); // Exit process with failure
   });
-})
-.catch((err) => {
-  console.error('Could not connect to MongoDB', err);
-  process.exit(1);
+
+// Error handling middleware for Multer and other errors
+app.use((err, req, res, next) => {
+  // Handle Multer errors
+  if (err instanceof multer.MulterError) {
+    logger.error('Multer error: ' + err.message);
+    return res.status(400).json({ message: err.message });
+  }
+
+  // Log any other errors
+  logger.error('Error: ' + err.stack || err.message);
+
+  // Return a more specific error message if it's an expected error
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({ message: 'Validation error occurred', details: err.errors });
+  }
+
+  // For all other errors, return a generic message
+  res.status(500).json({ message: 'Something went wrong, please try again later.' });
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something broke!' });
-});

@@ -66,12 +66,27 @@ const Register = () => {
       }
 
       try {
+        console.log('Submitting FormData:', formDataWithImage);
+
         // Send the form data to the backend via a POST request
-        await axios.post('http://localhost:5000/api/users/register', formDataWithImage);
+        await axios.post('http://localhost:5000/api/users/register', formDataWithImage, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
 
         // If successful, navigate to the login page
         setMessage('Registration successful! Redirecting to login...');
         navigate('/login');
+
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          description: '',
+          password: '',
+          profilePicture: null,
+        });
       } catch (error) {
         if (error.response) {
           setMessage(`Registration failed: ${error.response.data.message || error.response.data}`);
