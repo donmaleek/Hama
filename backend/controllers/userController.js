@@ -1,9 +1,9 @@
-const User = require('../models/User');  // Ensure correct path to your User model
-const { generateToken } = require('../middleware/auth');  // Ensure correct path to your auth middleware
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const fs = require('fs');
 const logger = require('../config/logger'); // Assuming you have a logger config
+const { generateToken } = require('../middleware/auth'); // Ensure correct path to your auth middleware
+const User = require('../models/User');  // Ensure correct path to your User model
 
 // Ensure the uploads directory exists
 const uploadsDir = path.join(__dirname, '../uploads');
@@ -16,6 +16,8 @@ const registerUser = async (req, res) => {
   try {
     const { name, email, description, password } = req.body;
     const profilePicture = req.file ? `/uploads/${req.file.filename}` : null;  // Handling profile picture
+
+    logger.info(`Registration request received: ${JSON.stringify(req.body)}`);
 
     // Check if the user already exists
     const userExists = await User.findOne({ where: { email } });
@@ -56,6 +58,8 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    logger.info(`Login request received: ${JSON.stringify(req.body)}`);
+
     // Find the user by email
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -63,8 +67,15 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
+    // Log the user object and hashed password
+    logger.info(`User found: ${JSON.stringify(user)}`);
+    console.log('Hashed password from DB:', user.password);
+
     // Compare the password
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    logger.info(`Password comparison result: ${isPasswordValid}`);
+    console.log('Plain password:', password);
+
     if (!isPasswordValid) {
       logger.warn(`Failed login attempt for email: ${email}`);
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -72,6 +83,7 @@ const loginUser = async (req, res) => {
 
     // Generate a token for the authenticated user
     const token = generateToken(user);
+    logger.info(`Generated token: ${token}`);
 
     // Set the token in an HTTP-only cookie (secure in production)
     res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
