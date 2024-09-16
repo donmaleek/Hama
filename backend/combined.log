@@ -24,3 +24,5 @@
 {"level":"info","message":"Server is running on port 5000","timestamp":"2024-09-14T19:02:21.292Z"}
 {"level":"info","message":"Connected to the database","timestamp":"2024-09-16T14:28:53.355Z"}
 {"level":"info","message":"Server is running on port 5000","timestamp":"2024-09-16T14:28:53.389Z"}
+{"level":"info","message":"Connected to the database","timestamp":"2024-09-16T21:03:37.015Z"}
+{"level":"info","message":"Server is running on port 5000","timestamp":"2024-09-16T21:03:37.028Z"}
