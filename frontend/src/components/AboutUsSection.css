@@ -4,9 +4,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 1120px;  /* Ensure it matches the map section width */
-  margin: 0 auto;  /* Center the section */
-  font-family: Arial, sans-serif;
+  max-width: 1120px; /* Matches the map section width */
+  margin: 0 auto; /* Centers the section */
+  font-family: 'Arial', sans-serif;
 }
 
 .about-us-title {
@@ -20,17 +20,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px; /* Increased gap for better spacing */
 }
 
 .about-us-image {
-  width: 50%;
-  height: auto;
+  width: 45%; /* Slightly reduced width to give more space to text */
+  height: 650px;
   border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a polished look */
 }
 
 .about-us-text-container {
-  width: 50%;
+  width: 55%; /* Increased width for text to balance layout */
 }
 
 .about-us-text {
@@ -38,38 +39,42 @@
   color: #333;
   text-align: justify;
   margin-bottom: 20px;
-  line-height: 1.6;
+  line-height: 1.8; /* Slightly increased line-height for better readability */
+  word-spacing: 0.05em; /* Added word spacing for more clarity */
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .about-us-content {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Center image and text */
     text-align: center; /* Center text for smaller screens */
+    gap: 15px; /* Reduce gap on smaller screens */
   }
 
   .about-us-image, .about-us-text-container {
-    width: 100%;
+    width: 90%; /* Full width with some padding */
   }
 
   .about-us-text {
-    font-size: 16px; /* Slightly reduce text size for better readability */
+    font-size: 16px; /* Slightly reduce text size */
     text-align: justify;
   }
 }
 
 @media (max-width: 480px) {
   .about-us-title {
-    font-size: 28px; /* Smaller title for very small screens */
+    font-size: 28px; /* Smaller title for mobile */
   }
 
   .about-us-text {
-    font-size: 14px; /* Further reduce text size for readability */
+    font-size: 15px; /* Further reduce text size for small screens */
+    line-height: 1.5; /* Adjust line-height for better readability */
   }
 
   .about-us-image {
     width: 100%;
     margin-bottom: 20px; /* Add space between image and text */
+    border-radius: 8px; /* Adjusted for mobile */
   }
 }

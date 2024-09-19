@@ -1,76 +1,56 @@
 .hero-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../assets/herosectionback.jpeg'); /* Replace with your background image */
+  background-image: url('../assets/herosectionback.jpeg'); /* Ensure the path is correct */
   background-size: cover;
   background-position: center;
-  height: 60vh;
-  color: white;
+  padding: 100px 20px;
   text-align: center;
-  padding: 20px;
+  color: white;
 }
 
 .hero-content {
-  background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5); /* Adding transparency to make text readable */
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 12px;
+}
+
+.hero-title, .hero-subtitle {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
 }
 
 .hero-title {
   font-size: 48px;
+  font-weight: bold;
   margin-bottom: 20px;
-  font-family: 'Arial, sans-serif';
 }
 
 .hero-subtitle {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color:white;
 }
 
 .hero-button {
-  background-color: #004080; /* Dark blue background */
+  background-color: #004080;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
-  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .hero-button:hover {
-  background-color: #0066cc; /* Lighter blue for hover */
+  background-color: #003060;
 }
 
-/* Responsive styles */
+/* Responsive Styling */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 36px;
-  }
-
-  .hero-subtitle {
-    font-size: 20px;
-  }
-
-  .hero-button {
-    font-size: 16px;
-    padding: 8px 16px;
-  }
-
-  .hero-content {
-    padding: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-container {
-    padding: 10px;
-    height: 50vh; /* Adjust the height for smaller screens */
-  }
-
-  .hero-title {
-    font-size: 28px;
   }
 
   .hero-subtitle {
@@ -78,12 +58,22 @@
   }
 
   .hero-button {
-    font-size: 14px;
-    padding: 6px 12px;
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
   }
 
-  .hero-content {
-    padding: 20px;
-    border-radius: 5px; /* Slightly smaller border radius */
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }

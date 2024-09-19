@@ -1,5 +1,60 @@
-.navbar a:hover {
-    background-color: #0066cc; /* Slightly lighter blue for hover */
-    border-radius: 5px;
-  }
-  
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #003366; /* Darker blue for a sophisticated look */
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  justify-content: flex-start; /* Align all items to the left */
+}
+
+/* Logo container */
+.logo-container {
+  margin-right: 20px; /* Space between logo and navigation links */
+}
+
+/* Logo styling */
+.logo {
+  height: 50px; /* Slightly larger logo */
+}
+
+/* Navigation links container */
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-grow: 0; /* Prevent container from growing */
+  justify-content: flex-start; /* Align links to the left */
+}
+
+/* Navigation items */
+.nav-item {
+  margin-left: 20px; /* Space between links */
+}
+
+/* Link styles */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px; /* Larger font size for better readability */
+  font-weight: 600; /* Slightly less bold for better aesthetics */
+  padding: 12px 16px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px; /* Rounded corners for links */
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background-color: #005bb5; /* Slightly lighter blue for hover */
+}
+
+/* Active link style */
+.nav-link-active {
+  color: #ffcc00; /* Accent color for active link */
+}

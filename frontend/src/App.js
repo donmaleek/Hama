@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import FeaturedRentals from './components/FeaturedRentals';
-import About from './components/AboutUsSection'; // Import About component
-import Blog from './components/BlogSection'; // Import Blog component
-import Testimonials from './components/TestimonialsSection'; // Import Testimonials component
-import Contact from './components/ContactSection'; // Import Contact component
-import Navbar from './components/Navbar'; // Import Navbar component
-import Footer from './components/Footer'; // Import Footer component
-import Register from './components/Register'; // Import Register component
-import Login from './components/Login'; // Import Register component
-import Profile from './components/Profile'; // Import Register component
+import About from './components/AboutUsSection';
+import Blog from './components/BlogSection';
+import Testimonials from './components/TestimonialsSection';
+import Contact from './components/ContactSection';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Register from './components/Register';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import RecentRentals from './components/RecentRentals'; // Import RecentRentals component
 
 import './App.css';
-import logo from './assets/logo2.png'; // Adjust the path according to your project structure
+import logo from './assets/logo2.png';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/RecentRentals" element={<RecentRentals />} /> {/* Correct route */}
         </Routes>
         <Footer />
       </div>

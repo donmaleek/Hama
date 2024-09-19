@@ -9,33 +9,33 @@ const TestimonialsSection = () => {
     {
       name: 'Mathias Alfred',
       image: client1,
-      message: 'Hama Bwana helped me find the perfect rental home. The process was smooth and efficient. Highly recommend their services!',
+      message: 'Hama Bwana made my search for the perfect rental seamless. The platform was easy to use, and I found my dream home in no time!',
     },
     {
       name: 'Queen Dama',
       image: client2,
-      message: 'As a landlord, listing my properties on Hama Bwana was the best decision. I found reliable tenants quickly and with ease.',
+      message: 'As a landlord, Hama Bwana has been a game-changer. I was able to list my properties and connect with trustworthy tenants almost immediately.',
     },
     {
       name: 'Phylis Mkenyi',
       image: client3,
-      message: 'The customer service at Hama Bwana is top-notch. They guided me through the entire process and were always available to help.',
+      message: 'The support I received from Hama Bwana was outstanding. Their team guided me every step of the way, ensuring a smooth experience.',
     },
   ];
 
   return (
-    <div className="testimonials-section">
-      <h1 className="testimonials-title">Testimonials</h1>
+    <section className="testimonials-section">
+      <h2 className="testimonials-title">What Our Clients Say</h2>
       <div className="testimonials-container">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial-card">
             <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" />
-            <p className="testimonial-message">"{testimonial.message}"</p>
+            <blockquote className="testimonial-message">"{testimonial.message}"</blockquote>
             <p className="testimonial-name">- {testimonial.name}</p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

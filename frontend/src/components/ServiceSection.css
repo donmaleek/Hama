@@ -1,59 +1,101 @@
 .service-section {
   background-color: #f9f9f9;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  text-align: center; /* Center text in the section */
 }
 
 .service-title {
-  font-size: 36px;
+  font-size: 40px;
   color: #004080;
-  text-align: center;
   margin-bottom: 10px;
 }
 
 .service-subtitle {
-  font-size: 20px;
+  font-size: 22px;
   color: #666;
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Increased spacing for better separation */
 }
 
 .service-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between; /* Adjusted to space items evenly */
+  align-items: flex-start; /* Align items at the start */
   gap: 20px;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .service-card {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
   text-align: center;
-  max-width: 300px;
+  max-width: 320px;
   flex: 1;
+  transition: transform 0.3s, box-shadow 0.3s; /* Added transition for interactive effect */
+}
+
+.service-card:hover {
+  transform: translateY(-10px); /* Lift card effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .service-icon {
-  font-size: 40px;
+  font-size: 44px;
   color: #004080;
   margin-bottom: 20px;
 }
 
 .service-card-title {
-  font-size: 24px;
+  font-size: 26px;
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .service-card-description {
-  font-size: 16px;
+  font-size: 18px;
   color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .service-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center;
+  }
+
+  .service-card {
+    max-width: 100%;
+    margin-bottom: 20px; /* Add margin between stacked items */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-title {
+    font-size: 32px; /* Smaller title for very small screens */
+  }
+
+  .service-subtitle {
+    font-size: 18px; /* Adjust subtitle size */
+  }
+
+  .service-card {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .service-card-title {
+    font-size: 22px; /* Adjust title size */
+  }
+
+  .service-card-description {
+    font-size: 16px; /* Adjust description size */
+  }
 }
