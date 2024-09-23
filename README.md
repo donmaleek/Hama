@@ -2,7 +2,7 @@
 
 **Hama Bwana** is a property rental platform that allows users to register, log in, post rentals, and search for available houses on a map. It is built with a modern tech stack using React for the frontend, Node.js with Express for the backend, and MongoDB/MySQL for the database.
 
-![Hama Bwana Banner](./assets/logo1.png)
+![Hama Bwana Banner](./assets/src/logo1.png)
 )
 
 ## Table of Contents
@@ -55,14 +55,14 @@
 Ensure you have the following installed:
 - Node.js (v14+)
 - npm or yarn
-- MongoDB or MySQL (depending on your configuration)
+- MySQL 
 
 ### Backend Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/donmaleek/hama-bwana.git
-   cd hama-bwana/backend
+   git clone https://github.com/donmaleek/Hama.git
+   cd Hama/backend
 Install backend dependencies:
 
 bash
