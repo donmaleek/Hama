@@ -1,6 +1,6 @@
 # Hama Bwana
 
-**Hama Bwana** is a property rental platform that allows users to register, log in, post rentals, and search for available houses on a map. It is built with a modern tech stack using React for the frontend, Node.js with Express for the backend, and MongoDB/MySQL for the database.
+**Hama Bwana** is a property rental platform that allows users to register, log in, post rentals, and search for available houses on a map. It is built with a modern tech stack using React for the frontend, Node.js with Express for the backend, and MySQL for the database.
 
 ![Hama Bwana Banner](./frontend/src/assets/logo1.png)
 
