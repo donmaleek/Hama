@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/frontend-of-hama/static/css/main.203810c7.css",
+    "main.js": "/frontend-of-hama/static/js/main.9fd02992.js",
+    "static/js/488.039b10bc.chunk.js": "/frontend-of-hama/static/js/488.039b10bc.chunk.js",
+    "static/media/logo2.png": "/frontend-of-hama/static/media/logo2.0437aea8841c4cdd720a.png",
+    "static/media/logo1.png": "/frontend-of-hama/static/media/logo1.6c3194eea70e348850eb.png",
+    "static/media/herosectionback.jpeg": "/frontend-of-hama/static/media/herosectionback.ab99daa98e8a67fe8c8f.jpeg",
+    "index.html": "/frontend-of-hama/index.html",
+    "main.203810c7.css.map": "/frontend-of-hama/static/css/main.203810c7.css.map",
+    "main.9fd02992.js.map": "/frontend-of-hama/static/js/main.9fd02992.js.map",
+    "488.039b10bc.chunk.js.map": "/frontend-of-hama/static/js/488.039b10bc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.203810c7.css",
+    "static/js/main.9fd02992.js"
+  ]
+}
